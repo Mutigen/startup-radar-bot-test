@@ -2,11 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/scan.py",
+      "src": "api/*.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
+    {
+      "src": "/api/mock",
+      "dest": "api/mock.py"
+    },
     {
       "src": "/api/scan",
       "dest": "api/scan.py"
