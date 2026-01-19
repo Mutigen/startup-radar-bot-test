@@ -1,19 +1,20 @@
 """
 Startup Radar Bot - Mock API for Vercel Deployment
 Version: 2.2 - Demo version for testing without API credits
+UPDATED: January 2026 - Current dates
 """
 
 from http.server import BaseHTTPRequestHandler
 import json
 from datetime import datetime, timedelta
 
-# Sample realistic startup data
+# Sample realistic startup data - UPDATED FOR 2026
 MOCK_STARTUPS = [
     {
         'name': 'TechVision AI GmbH',
         'city': 'Berlin',
         'purpose': 'Development of AI-powered enterprise software solutions for process automation and data analytics in the manufacturing sector',
-        'registration_date': '2025-01-05',
+        'registration_date': '2026-01-05',
         'legal_form': 'GmbH',
         'postal_code': '10115',
         'register_type': 'HRB',
@@ -23,7 +24,7 @@ MOCK_STARTUPS = [
         'name': 'CloudFlow Solutions UG',
         'city': 'München',
         'purpose': 'Cloud-based SaaS platform for workflow automation and project management for small and medium enterprises',
-        'registration_date': '2024-12-20',
+        'registration_date': '2025-12-20',
         'legal_form': 'UG',
         'postal_code': '80331',
         'register_type': 'HRB',
@@ -33,7 +34,7 @@ MOCK_STARTUPS = [
         'name': 'DataMind Analytics GmbH',
         'city': 'Hamburg',
         'purpose': 'Big data analytics and machine learning solutions for retail and e-commerce businesses',
-        'registration_date': '2025-01-10',
+        'registration_date': '2026-01-10',
         'legal_form': 'GmbH',
         'postal_code': '20095',
         'register_type': 'HRB',
@@ -43,7 +44,7 @@ MOCK_STARTUPS = [
         'name': 'FinTech Innovations AG',
         'city': 'Frankfurt',
         'purpose': 'Development of blockchain-based payment solutions and digital banking platforms for the European market',
-        'registration_date': '2024-12-15',
+        'registration_date': '2025-12-15',
         'legal_form': 'AG',
         'postal_code': '60306',
         'register_type': 'HRB',
@@ -53,7 +54,7 @@ MOCK_STARTUPS = [
         'name': 'SmartLogistics Pro GmbH',
         'city': 'Darmstadt',
         'purpose': 'IoT and AI-driven logistics optimization software for supply chain management and warehouse automation',
-        'registration_date': '2025-01-08',
+        'registration_date': '2026-01-08',
         'legal_form': 'GmbH',
         'postal_code': '64283',
         'register_type': 'HRB',
@@ -63,7 +64,7 @@ MOCK_STARTUPS = [
         'name': 'HealthTech Solutions UG',
         'city': 'Köln',
         'purpose': 'Digital health platform for telemedicine and patient data management with AI-supported diagnostics',
-        'registration_date': '2024-12-28',
+        'registration_date': '2025-12-28',
         'legal_form': 'UG',
         'postal_code': '50667',
         'register_type': 'HRB',
@@ -73,7 +74,7 @@ MOCK_STARTUPS = [
         'name': 'EcoMobility GmbH',
         'city': 'Stuttgart',
         'purpose': 'Software solutions for electric vehicle fleet management and charging infrastructure optimization',
-        'registration_date': '2025-01-03',
+        'registration_date': '2026-01-03',
         'legal_form': 'GmbH',
         'postal_code': '70173',
         'register_type': 'HRB',
@@ -83,7 +84,7 @@ MOCK_STARTUPS = [
         'name': 'CyberShield Security UG',
         'city': 'Düsseldorf',
         'purpose': 'Cybersecurity software and services for SMEs, including threat detection and data protection solutions',
-        'registration_date': '2024-12-22',
+        'registration_date': '2025-12-22',
         'legal_form': 'UG',
         'postal_code': '40210',
         'register_type': 'HRB',
@@ -93,7 +94,7 @@ MOCK_STARTUPS = [
         'name': 'PropTech Ventures GmbH',
         'city': 'Leipzig',
         'purpose': 'Digital real estate platform connecting property owners with tenants using AI-powered matching algorithms',
-        'registration_date': '2025-01-12',
+        'registration_date': '2026-01-12',
         'legal_form': 'GmbH',
         'postal_code': '04103',
         'register_type': 'HRB',
@@ -103,7 +104,7 @@ MOCK_STARTUPS = [
         'name': 'EdTech Learning Solutions UG',
         'city': 'Karlsruhe',
         'purpose': 'E-learning platform with adaptive learning technology and gamification for corporate training',
-        'registration_date': '2024-12-18',
+        'registration_date': '2025-12-18',
         'legal_form': 'UG',
         'postal_code': '76131',
         'register_type': 'HRB',
@@ -113,7 +114,7 @@ MOCK_STARTUPS = [
         'name': 'RoboTech Automation GmbH',
         'city': 'Berlin',
         'purpose': 'Robotics and automation solutions for industrial manufacturing processes',
-        'registration_date': '2024-11-25',
+        'registration_date': '2025-11-25',
         'legal_form': 'GmbH',
         'postal_code': '10115',
         'register_type': 'HRB',
@@ -123,7 +124,7 @@ MOCK_STARTUPS = [
         'name': 'GreenEnergy Digital UG',
         'city': 'München',
         'purpose': 'Software for renewable energy management and smart grid optimization',
-        'registration_date': '2024-11-30',
+        'registration_date': '2025-11-30',
         'legal_form': 'UG',
         'postal_code': '80331',
         'register_type': 'HRB',
@@ -133,7 +134,7 @@ MOCK_STARTUPS = [
         'name': 'FoodTech Innovations GmbH',
         'city': 'Hamburg',
         'purpose': 'Online marketplace platform connecting local food producers with restaurants and consumers',
-        'registration_date': '2024-11-15',
+        'registration_date': '2025-11-15',
         'legal_form': 'GmbH',
         'postal_code': '20095',
         'register_type': 'HRB',
@@ -143,7 +144,7 @@ MOCK_STARTUPS = [
         'name': 'InsurTech Connect AG',
         'city': 'Frankfurt',
         'purpose': 'Digital insurance brokerage platform with AI-powered risk assessment and personalized policy recommendations',
-        'registration_date': '2024-10-28',
+        'registration_date': '2025-10-28',
         'legal_form': 'AG',
         'postal_code': '60306',
         'register_type': 'HRB',
@@ -153,7 +154,7 @@ MOCK_STARTUPS = [
         'name': 'SmartCity Solutions GmbH',
         'city': 'Darmstadt',
         'purpose': 'IoT platform for smart city infrastructure management and urban planning',
-        'registration_date': '2024-11-05',
+        'registration_date': '2025-11-05',
         'legal_form': 'GmbH',
         'postal_code': '64283',
         'register_type': 'HRB',
@@ -183,7 +184,7 @@ class handler(BaseHTTPRequestHandler):
             'current_group': group,
             'timestamp': datetime.now().isoformat(),
             'note': 'This is a DEMO API with sample data. No real API calls are made.',
-            'github': 'https://github.com/your-username/startup-radar-bot',
+            'github': 'https://github.com/Mutigen/startup-radar-bot-test',
             'demo_usage': {
                 'method': 'POST',
                 'headers': {
